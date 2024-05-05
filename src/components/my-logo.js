@@ -17,10 +17,15 @@ const Logo = ({ logo, link }) => {
     }
   `;
 
+
+
+
   return html`<style>
       ${style}
     </style>
-    <p>testing from my logo</p>`;
+    <a href=${link} target="_blank">
+      <img src=${logo} class="logo" alt="cocktail-logo" />
+    </a>`;
 };
 
 customElements.define(

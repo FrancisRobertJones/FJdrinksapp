@@ -1,11 +1,11 @@
 import { html, css, render } from "lit";
 import { component, useState, useCallback } from "haunted";
 
-import litLogo from "./src/assets/lit.svg";
-import hauntedLogo from "./src/assets/haunted.svg";
-import viteLogo from "./src/assets/vite.svg";
+import cocktailLogo from "./src/assets/cocktailLogo.jpeg"
 
 import "./src/components/my-logo.js";
+import "./src/components/my-input.js";
+
 
 const MyApp = () => {
   const style = css`
@@ -38,23 +38,26 @@ const MyApp = () => {
   `;
 
   const [count, setCount] = useState(0);
+  const [input, setInput] = useState("");
+
+
   const onClick = useCallback(() => {
     setCount((prev) => prev + 1);
   }, []);
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  }
 
   return html`
     <style>
       ${style}
     </style>
+    <h1>FJs drink app</h1>
     <div>
-      <my-logo logo=${viteLogo} link="https://vitejs.dev"></my-logo>
-      <my-logo
-        logo=${hauntedLogo}
-        link="https://hauntedhooks.netlify.app/"
-      ></my-logo>
-      <my-logo logo=${litLogo} link="https://lit.dev"></my-logo>
+      <my-logo logo=${cocktailLogo} link="/"></my-logo>
+      <my-input value=${input} onChange=${handleChange}>
     </div>
-    <h1>Hello world</h1>
     <div>
       <button @click=${onClick} part="button">count is ${count}</button>
     </div>
